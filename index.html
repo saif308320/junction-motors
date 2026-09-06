@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Motor Club — Private Exotic &amp; Executive Motor House</title>
+<meta name="description" content="Apex Motor Club: an owned collection of exotic and executive vehicles in Chicago, delivered and collected — with chauffeur service on request.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2324282B'/%3E%3Cpath d='M20 62 L38 34 L50 34 L44 46 L62 46 L80 62 Z' fill='none' stroke='%2210A37F' stroke-width='5' stroke-linejoin='round'/%3E%3Ccircle cx='34' cy='66' r='6' fill='%2310A37F'/%3E%3Ccircle cx='66' cy='66' r='6' fill='%2310A37F'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --gunmetal: #24282B;
+    --gunmetal-deep: #16191B;
+    --gunmetal-pale: #E9EBEB;
+    --emerald: #10A37F;
+    --emerald-dark: #0C7D62;
+    --white: #FFFFFF;
+    --off-white: #F7F8F7;
+    --ink: #1D2022;
+    --ink-soft: #5C6265;
+    --line: #E1E4E3;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 26px;
+    --shadow-soft: 0 18px 40px -22px rgba(22,25,27,0.4);
+    --shadow-lift: 0 26px 54px -20px rgba(22,25,27,0.5);
+    --container: 1200px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; font-family:'Inter',sans-serif; color:var(--ink); background:var(--off-white); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Manrope',sans-serif; color:var(--ink); line-height:1.15; margin:0 0 0.5em; font-weight:700;}
+  p{margin:0 0 1em;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ul{margin:0; padding:0; list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .container{max-width:var(--container); margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+  @media (max-width:720px){ .container{padding:0 20px;} }
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:16px 30px; border-radius:6px; font-weight:600; font-size:15px; letter-spacing:0.2px; border:1.5px solid transparent; transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease; white-space:nowrap;}
+  .btn-emerald{background:var(--emerald); color:var(--white); box-shadow:0 14px 30px -12px rgba(16,163,127,0.55);}
+  .btn-emerald:hover{background:var(--emerald-dark); transform:translateY(-2px); box-shadow:0 20px 34px -12px rgba(12,125,98,0.6);}
+  .btn-outline{background:transparent; color:var(--white); border-color:rgba(255,255,255,0.55);}
+  .btn-outline:hover{background:rgba(255,255,255,0.1); transform:translateY(-2px);}
+  .btn-dark{background:var(--gunmetal); color:var(--white); box-shadow:0 14px 30px -14px rgba(36,40,43,0.55);}
+  .btn-dark:hover{background:var(--gunmetal-deep); transform:translateY(-2px);}
+  .btn-ghost{background:transparent; color:var(--gunmetal); border-color:var(--gunmetal);}
+  .btn-ghost:hover{background:var(--gunmetal-pale);}
+
+  header.nav{position:fixed; top:0; left:0; right:0; z-index:900; padding:22px 0; transition:background .4s ease, box-shadow .4s ease, padding .4s ease;}
+  header.nav .container{display:flex; align-items:center; justify-content:space-between;}
+  header.nav.solid{background:rgba(247,248,247,0.95); backdrop-filter:blur(10px); box-shadow:0 10px 30px -18px rgba(22,25,27,0.35); padding:13px 0;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand svg{width:38px; height:38px; flex-shrink:0;}
+  .brand-text{font-family:'Manrope',sans-serif; font-weight:800; font-size:18px; letter-spacing:0.3px; color:var(--white); transition:color .4s ease;}
+  header.nav.solid .brand-text{color:var(--ink);}
+  nav.primary-links{display:flex; align-items:center; gap:28px;}
+  nav.primary-links a{font-size:14px; font-weight:600; color:rgba(255,255,255,0.9); padding:6px 0; transition:color .4s ease;}
+  header.nav.solid nav.primary-links a{color:var(--ink-soft);}
+  nav.primary-links a:hover{color:var(--emerald);}
+  header.nav .btn{padding:11px 22px; font-size:13.5px;}
+  .hamburger{display:none; width:44px; height:44px; border:none; background:rgba(255,255,255,0.14); border-radius:8px; align-items:center; justify-content:center; flex-direction:column; gap:5px;}
+  header.nav.solid .hamburger{background:var(--gunmetal-pale);}
+  .hamburger span{display:block; width:20px; height:2px; background:var(--white); transition:background .4s ease;}
+  header.nav.solid .hamburger span{background:var(--ink);}
+  @media (max-width:980px){
+    nav.primary-links{position:fixed; top:0; right:-100%; height:100vh; width:min(320px,80%); background:var(--off-white); flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:100px 34px 34px; gap:22px; transition:right .45s ease; box-shadow:-20px 0 50px rgba(0,0,0,0.15);}
+    nav.primary-links.open{right:0;}
+    nav.primary-links a{color:var(--ink) !important; font-size:16.5px;}
+    .hamburger{display:flex;}
+    .desktop-cta{display:none;}
+  }
+
+  /* Hero */
+  .hero{min-height:100vh; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .hero-media{position:absolute; inset:0; z-index:0;}
+  .hero-media img{width:100%; height:100%; object-fit:cover;}
+  .hero-media::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,17,18,0.6) 0%, rgba(15,17,18,0.72) 55%, rgba(15,17,18,0.92) 100%);}
+  .hero-inner{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding:150px 24px 60px; width:100%;}
+  .hero-eyebrow{display:inline-flex; align-items:center; gap:8px; background:rgba(16,163,127,0.14); border:1px solid rgba(16,163,127,0.45); color:#4FD8B4; font-size:13px; font-weight:600; padding:8px 18px; border-radius:4px; margin-bottom:24px; letter-spacing:0.3px;}
+  .hero-inner h1{font-size:clamp(2.3rem,5.2vw,4.4rem); color:var(--white); max-width:19ch; letter-spacing:-0.5px;}
+  .hero-inner .lede{color:rgba(255,255,255,0.82); font-size:clamp(1rem,1.6vw,1.2rem); max-width:58ch; margin:18px 0 34px;}
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-bottom:60px;}
+  .stat-strip{display:flex; gap:0; flex-wrap:wrap; justify-content:center; width:100%; max-width:920px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16); backdrop-filter:blur(6px); border-radius:6px; overflow:hidden;}
+  .stat-item{flex:1 1 200px; text-align:center; padding:26px 20px; border-right:1px solid rgba(255,255,255,0.14);}
+  .stat-item:last-child{border-right:none;}
+  .stat-num{font-family:'Manrope',sans-serif; font-weight:800; font-size:clamp(1.4rem,2.4vw,1.9rem); color:var(--white);}
+  .stat-label{font-size:12.5px; color:rgba(255,255,255,0.68); margin-top:4px;}
+  @media (max-width:640px){ .stat-item{flex:1 1 100%; border-right:none; border-bottom:1px solid rgba(255,255,255,0.14);} .stat-item:last-child{border-bottom:none;} }
+
+  .section{padding:110px 0;}
+  .section-tight{padding:80px 0;}
+  .section-gunmetal-pale{background:var(--gunmetal-pale);}
+  .section-gunmetal{background:var(--gunmetal); color:var(--white);}
+  .section-gunmetal h2, .section-gunmetal h3{color:var(--white);}
+  .section-header{max-width:680px; margin-bottom:56px;}
+  .section-header.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-header h2{font-size:clamp(1.9rem,3.4vw,2.6rem);}
+  .section-header p{color:var(--ink-soft); font-size:17px; max-width:56ch;}
+  .section-gunmetal .section-header p{color:rgba(255,255,255,0.78);}
+  @media (max-width:720px){ .section{padding:74px 0;} }
+
+  /* Fleet grid */
+  .fleet-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  @media (max-width:920px){ .fleet-grid{grid-template-columns:1fr;} }
+  .fleet-card{background:var(--white); border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--line); transition:transform .35s ease, box-shadow .35s ease;}
+  .fleet-card:hover{transform:translateY(-8px); box-shadow:var(--shadow-lift);}
+  .fleet-card img{height:210px; object-fit:cover; width:100%;}
+  .fleet-body{padding:24px 24px 26px;}
+  .fleet-class{font-size:12px; font-weight:700; letter-spacing:0.4px; color:var(--emerald-dark); margin-bottom:6px; text-transform:uppercase;}
+  .fleet-body h3{font-size:19px; margin-bottom:8px;}
+  .fleet-body p{color:var(--ink-soft); font-size:14.5px; margin-bottom:16px;}
+  .fleet-foot{display:flex; align-items:center; justify-content:space-between;}
+  .fleet-price{font-weight:800; font-family:'Manrope',sans-serif; color:var(--ink); font-size:17px;}
+  .fleet-price span{font-size:12.5px; font-weight:500; color:var(--ink-soft);}
+
+  /* Step process */
+  .steps-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media (max-width:920px){ .steps-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .steps-grid{grid-template-columns:1fr;} }
+  .step-card{background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); padding:30px 26px; position:relative; transition:transform .35s ease, box-shadow .35s ease;}
+  .step-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-lift);}
+  .step-num{width:38px; height:38px; border-radius:50%; background:var(--gunmetal); color:var(--white); display:flex; align-items:center; justify-content:center; font-family:'Manrope',sans-serif; font-weight:700; margin-bottom:18px; font-size:14px;}
+  .step-card h4{font-size:16.5px; margin-bottom:8px;}
+  .step-card p{font-size:14.5px; color:var(--ink-soft); margin:0;}
+
+  /* Service cards */
+  .service-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media (max-width:980px){ .service-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .service-grid{grid-template-columns:1fr;} }
+  .service-card{background:var(--white); border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--line); transition:transform .35s ease, box-shadow .35s ease;}
+  .service-card:hover{transform:translateY(-8px); box-shadow:var(--shadow-lift);}
+  .service-card img{height:160px; object-fit:cover; width:100%;}
+  .service-body{padding:20px 20px 24px;}
+  .service-body h3{font-size:16.5px; margin-bottom:8px;}
+  .service-body p{color:var(--ink-soft); font-size:13.8px; margin:0;}
+
+  /* About split */
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  @media (max-width:880px){ .split{grid-template-columns:1fr; gap:36px;} }
+  .split img{border-radius:var(--radius-lg); width:100%; height:460px; object-fit:cover; box-shadow:var(--shadow-soft);}
+  .split.reverse{direction:rtl;}
+  .split.reverse > *{direction:ltr;}
+  .standard-list li{display:flex; gap:12px; padding:10px 0; font-size:15px; color:var(--ink-soft); border-bottom:1px solid var(--line);}
+  .standard-list li:last-child{border-bottom:none;}
+  .standard-list svg{width:20px; height:20px; stroke:var(--emerald-dark); flex-shrink:0; margin-top:2px;}
+
+  /* Testimonials */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  @media (max-width:920px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi-card{background:var(--white); border-radius:var(--radius-md); padding:30px 26px; border:1px solid var(--line); transition:transform .35s ease, box-shadow .35s ease;}
+  .testi-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-lift);}
+  .testi-stars{color:var(--emerald); font-size:15px; margin-bottom:14px; letter-spacing:2px;}
+  .testi-card p.quote{font-size:15px; color:var(--ink); font-style:italic;}
+  .testi-person{display:flex; align-items:center; gap:12px; margin-top:18px;}
+  .testi-person img{width:44px; height:44px; border-radius:50%; object-fit:cover;}
+  .testi-person strong{display:block; font-size:14.5px;}
+  .testi-person span{font-size:12.5px; color:var(--ink-soft);}
+
+  /* Vehicle detail cards */
+  .vehicle-detail{display:grid; grid-template-columns:1fr 1fr; gap:0; background:var(--white); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-soft); margin-bottom:26px;}
+  @media (max-width:880px){ .vehicle-detail{grid-template-columns:1fr;} }
+  .vehicle-detail:nth-child(even){direction:rtl;}
+  .vehicle-detail:nth-child(even) > *{direction:ltr;}
+  .vehicle-media{position:relative; min-height:320px;}
+  .vehicle-media img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .vehicle-info{padding:40px;}
+  .vehicle-info h3{font-size:22px; margin-bottom:6px;}
+  .vehicle-tagline{color:var(--emerald-dark); font-weight:600; font-size:13.5px; margin-bottom:14px;}
+  .vehicle-specs{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:18px 0 22px;}
+  .vehicle-specs div{font-size:13.5px; color:var(--ink-soft);}
+  .vehicle-specs strong{display:block; color:var(--ink); font-size:14.5px;}
+  .vehicle-foot{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;}
+
+  /* Membership */
+  .plans-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  @media (max-width:920px){ .plans-grid{grid-template-columns:1fr;} }
+  .plan-card{background:var(--white); border-radius:var(--radius-md); padding:34px 28px; border:1.5px solid var(--line); transition:transform .35s ease, box-shadow .35s ease, border-color .3s ease;}
+  .plan-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-lift);}
+  .plan-card.featured{border-color:var(--emerald); position:relative;}
+  .plan-tag{position:absolute; top:-13px; right:28px; background:var(--emerald); color:var(--white); font-size:11.5px; font-weight:700; padding:5px 14px; border-radius:100px;}
+  .plan-price{font-family:'Manrope',sans-serif; font-weight:800; font-size:30px; margin:14px 0 4px;}
+  .plan-price span{font-size:13.5px; font-weight:600; color:var(--ink-soft);}
+  .plan-card ul{margin:22px 0 26px;}
+  .plan-card li{padding:8px 0 8px 26px; position:relative; font-size:14px; color:var(--ink-soft);}
+  .plan-card li::before{content:'✓'; position:absolute; left:0; top:7px; color:var(--emerald-dark); font-weight:700;}
+
+  /* Info cols */
+  .info-cols{display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
+  @media (max-width:780px){ .info-cols{grid-template-columns:1fr;} }
+  .info-card{background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; transition:transform .35s ease, box-shadow .35s ease;}
+  .info-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-lift);}
+  .info-card img{height:200px; object-fit:cover; width:100%;}
+  .info-card-body{padding:26px;}
+  .info-card-body h3{font-size:18px; margin-bottom:10px;}
+  .info-card-body p{color:var(--ink-soft); font-size:14.5px; margin:0;}
+  .info-card-body ul{margin-top:12px;}
+  .info-card-body li{font-size:14px; color:var(--ink-soft); padding:6px 0 6px 22px; position:relative;}
+  .info-card-body li::before{content:''; position:absolute; left:0; top:13px; width:7px; height:7px; border-radius:50%; background:var(--emerald);}
+
+  /* City hubs */
+  .hubs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:820px){ .hubs-grid{grid-template-columns:1fr;} }
+  .hub-card{position:relative; border-radius:var(--radius-md); overflow:hidden; height:260px; box-shadow:var(--shadow-soft);}
+  .hub-card img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .hub-card:hover img{transform:scale(1.07);}
+  .hub-caption{position:absolute; left:0; right:0; bottom:0; padding:20px; color:var(--white); background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(15,17,18,0.78) 100%);}
+  .hub-caption strong{font-family:'Manrope',sans-serif; font-size:17px; display:block;}
+  .hub-caption span{font-size:12.5px; color:rgba(255,255,255,0.8);}
+  .map-wrap{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft); border:1px solid var(--line); margin-top:30px;}
+  .map-wrap iframe{width:100%; height:380px; border:0; display:block;}
+
+  /* Corporate */
+  .corp-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center;}
+  @media (max-width:880px){ .corp-grid{grid-template-columns:1fr;} }
+  .corp-list li{display:flex; gap:14px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.14);}
+  .corp-list li:last-child{border-bottom:none;}
+  .corp-list strong{display:block; font-size:15px; color:var(--white);}
+  .corp-list span{font-size:13.5px; color:rgba(255,255,255,0.72);}
+
+  /* Wedding/event */
+  .event-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  @media (max-width:880px){ .event-wrap{grid-template-columns:1fr; gap:36px;} }
+
+  /* Gallery */
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:920px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  .gallery-item{border-radius:var(--radius-md); overflow:hidden; height:230px; box-shadow:var(--shadow-soft);}
+  .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .gallery-item:hover img{transform:scale(1.08);}
+
+  /* FAQ */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line); padding:22px 0;}
+  .faq-q{display:flex; align-items:center; justify-content:space-between; gap:20px; cursor:pointer; font-family:'Manrope',sans-serif; font-weight:700; font-size:16.5px;}
+  .faq-q .plus{width:22px; height:22px; flex-shrink:0; position:relative;}
+  .faq-q .plus::before, .faq-q .plus::after{content:''; position:absolute; background:var(--gunmetal); border-radius:2px; transition:transform .3s ease;}
+  .faq-q .plus::before{width:100%; height:2px; top:50%; left:0; transform:translateY(-50%);}
+  .faq-q .plus::after{height:100%; width:2px; left:50%; top:0; transform:translateX(-50%);}
+  .faq-item.open .plus::after{transform:translateX(-50%) rotate(90deg); opacity:0;}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .4s ease;}
+  .faq-a p{padding-top:14px; color:var(--ink-soft); font-size:15px; margin:0; max-width:64ch;}
+  .faq-item.open .faq-a{max-height:220px;}
+
+  /* Requirements */
+  .req-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  @media (max-width:880px){ .req-grid{grid-template-columns:1fr;} }
+  .req-card{background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); padding:28px;}
+  .req-card h3{font-size:17px; margin-bottom:10px;}
+  .req-card p{color:var(--ink-soft); font-size:14.5px; margin:0;}
+
+  /* Reservation form */
+  .reserve-wrap{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:flex-start;}
+  @media (max-width:920px){ .reserve-wrap{grid-template-columns:1fr;} }
+  .reserve-form{background:var(--white); border-radius:var(--radius-lg); padding:38px; border:1px solid var(--line); box-shadow:var(--shadow-soft);}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  @media (max-width:520px){ .form-row{grid-template-columns:1fr;} }
+  .field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px;}
+  .field label{font-size:13.5px; font-weight:600; color:var(--ink-soft);}
+  .field input, .field select, .field textarea{padding:13px 14px; border-radius:8px; border:1.5px solid var(--line); font-family:inherit; font-size:15px; background:var(--off-white); transition:border-color .25s ease;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--emerald);}
+  .reserve-form .btn{width:100%; margin-top:6px;}
+  .reserve-note{display:flex; gap:14px; align-items:flex-start; background:var(--gunmetal-pale); border-radius:var(--radius-md); padding:22px 24px; margin-bottom:18px;}
+  .reserve-note svg{width:22px; height:22px; stroke:var(--gunmetal); flex-shrink:0; margin-top:2px;}
+  .reserve-note p{margin:0; font-size:14.5px; color:var(--ink-soft);}
+  .reserve-list{margin-top:22px;}
+  .reserve-list li{display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); font-size:15px; color:var(--ink-soft);}
+  .reserve-list li:last-child{border-bottom:none;}
+  .reserve-list strong{color:var(--ink); min-width:140px; display:inline-block;}
+
+  /* Reviews */
+  .reviews-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  @media (max-width:780px){ .reviews-grid{grid-template-columns:1fr;} }
+  .review-row{display:flex; gap:14px; background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); padding:22px;}
+  .review-row img{width:44px; height:44px; border-radius:50%; object-fit:cover; flex-shrink:0;}
+  .review-row strong{font-size:14.5px; display:block;}
+  .review-row .stars{color:var(--emerald); font-size:13px; margin:2px 0 6px;}
+  .review-row p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  /* Instagram gallery */
+  .insta-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:14px;}
+  @media (max-width:920px){ .insta-grid{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:560px){ .insta-grid{grid-template-columns:repeat(2,1fr);} }
+  .insta-item{position:relative; border-radius:10px; overflow:hidden; height:150px;}
+  .insta-item img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .insta-item:hover img{transform:scale(1.1);}
+  .insta-item::after{content:'♥'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--white); font-size:20px; background:rgba(16,163,127,0.0); opacity:0; transition:opacity .3s ease, background .3s ease;}
+  .insta-item:hover::after{opacity:1; background:rgba(16,42,35,0.35);}
+
+  /* Newsletter */
+  .newsletter-box{display:flex; align-items:center; gap:20px; background:var(--gunmetal); border-radius:var(--radius-lg); padding:44px; flex-wrap:wrap; justify-content:space-between;}
+  .newsletter-box h2{color:var(--white); font-size:clamp(1.4rem,2.4vw,1.9rem); margin-bottom:4px;}
+  .newsletter-box p{margin:0; color:rgba(255,255,255,0.75);}
+  .newsletter-form{display:flex; gap:12px; flex-wrap:wrap;}
+  .newsletter-form input{padding:15px 16px; border-radius:6px; border:1.5px solid rgba(255,255,255,0.2); font-size:15px; font-family:inherit; min-width:220px; background:rgba(255,255,255,0.06); color:var(--white);}
+  .newsletter-form input::placeholder{color:rgba(255,255,255,0.5);}
+
+  /* Footer */
+  footer{background:var(--gunmetal-deep); color:rgba(247,248,247,0.68); padding-top:70px;}
+  .footer-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1.3fr; gap:40px; padding-bottom:50px; border-bottom:1px solid rgba(247,248,247,0.1);}
+  @media (max-width:880px){ .footer-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .footer-grid{grid-template-columns:1fr;} }
+  .footer-brand{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
+  .footer-brand span{font-family:'Manrope',sans-serif; font-weight:800; color:var(--off-white); font-size:17px;}
+  footer h5{color:var(--off-white); font-family:'Manrope',sans-serif; font-size:14px; margin-bottom:16px;}
+  footer li{padding:6px 0; font-size:14px;}
+  footer li a:hover{color:var(--emerald);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding:26px 0; font-size:12.5px; flex-wrap:wrap; gap:10px;}
+  .social-row{display:flex; gap:12px;}
+  .social-row a{width:36px; height:36px; border-radius:50%; background:rgba(247,248,247,0.07); display:flex; align-items:center; justify-content:center; transition:background .3s ease;}
+  .social-row a:hover{background:var(--emerald);}
+  .social-row svg{width:16px; height:16px; stroke:var(--off-white);}
+
+  /* Modal */
+  .modal-overlay{position:fixed; inset:0; background:rgba(16,18,19,0.72); z-index:2000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s ease; padding:20px;}
+  .modal-overlay.active{opacity:1; pointer-events:auto;}
+  .modal-box{background:var(--off-white); border-radius:var(--radius-lg); padding:46px 40px; max-width:440px; width:100%; text-align:center; transform:scale(0.9) translateY(10px); transition:transform .35s ease; box-shadow:var(--shadow-lift);}
+  .modal-overlay.active .modal-box{transform:scale(1) translateY(0);}
+  .modal-icon{width:66px; height:66px; border-radius:50%; background:var(--gunmetal-pale); display:flex; align-items:center; justify-content:center; margin:0 auto 20px;}
+  .modal-icon svg{width:32px; height:32px; stroke:var(--gunmetal);}
+  .modal-box h3{font-size:21px; margin-bottom:10px;}
+  .modal-box p{color:var(--ink-soft); font-size:15px; margin-bottom:26px;}
+  .modal-box .btn{width:100%;}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="nav" id="siteNav">
+  <div class="container">
+    <a href="#hero" class="brand">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="20" fill="#24282B"/>
+        <path d="M20 62 L38 34 L50 34 L44 46 L62 46 L80 62 Z" fill="none" stroke="#10A37F" stroke-width="5" stroke-linejoin="round"/>
+        <circle cx="34" cy="66" r="6" fill="#10A37F"/>
+        <circle cx="66" cy="66" r="6" fill="#10A37F"/>
+      </svg>
+      <span class="brand-text">Apex Motor Club</span>
+    </a>
+    <nav class="primary-links" id="primaryLinks">
+      <a href="#collection">The Collection</a>
+      <a href="#services">Services</a>
+      <a href="#membership">Membership</a>
+      <a href="#hubs">City Hubs</a>
+      <a href="#faq">FAQ</a>
+      <a href="#reserve" class="btn btn-emerald desktop-cta">Reserve a Vehicle</a>
+    </nav>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero" id="hero">
+  <div class="hero-media">
+    <img src="https://source.unsplash.com/1600x900/?luxury,car,night,city" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-hero/1600/900';" alt="Luxury car driving through the city at night">
+  </div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow reveal">Owned Fleet · Not a Rental Lot</span>
+    <h1 class="reveal">A private collection, delivered when and where you need it</h1>
+    <p class="lede reveal">Apex Motor Club is a members' motor house — every vehicle owned and maintained in-house, delivered to your door by a discreet team, with chauffeur service available on request.</p>
+    <div class="hero-ctas reveal">
+      <a href="#reserve" class="btn btn-emerald">Reserve a Vehicle</a>
+      <a href="#collection" class="btn btn-outline">View the Collection</a>
+    </div>
+    <div class="stat-strip reveal">
+      <div class="stat-item"><div class="stat-num">42</div><div class="stat-label">Owned Vehicles</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">City Hubs</div></div>
+      <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Concierge Availability</div></div>
+      <div class="stat-item"><div class="stat-num">4.9 ★</div><div class="stat-label">Member Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. THE COLLECTION ================= -->
+<section class="section" id="collection">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>The collection</h2>
+      <p>Every vehicle is owned outright, serviced in-house, and detailed before each handover — never a third-party listing.</p>
+    </div>
+    <div class="fleet-grid">
+      <div class="fleet-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?mercedes,s-class,luxury,sedan" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-fleet1/700/500';" alt="Mercedes-Benz S-Class executive sedan">
+        <div class="fleet-body">
+          <div class="fleet-class">Executive Sedan</div>
+          <h3>Mercedes-Benz S-Class</h3>
+          <p>The standard for boardroom arrivals and airport transfers alike.</p>
+          <div class="fleet-foot"><div class="fleet-price">$495<span>/day</span></div></div>
+        </div>
+      </div>
+      <div class="fleet-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?range rover,suv,luxury,black" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-fleet2/700/500';" alt="Range Rover luxury SUV">
+        <div class="fleet-body">
+          <div class="fleet-class">Luxury SUV</div>
+          <h3>Range Rover Autobiography</h3>
+          <p>Commanding presence with room for a full travel party and luggage.</p>
+          <div class="fleet-foot"><div class="fleet-price">$625<span>/day</span></div></div>
+        </div>
+      </div>
+      <div class="fleet-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?lamborghini,sports,car,yellow" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-fleet3/700/500';" alt="Lamborghini sports car">
+        <div class="fleet-body">
+          <div class="fleet-class">Sports</div>
+          <h3>Lamborghini Huracán</h3>
+          <p>For the drive itself — 600+ horsepower, delivered with a full walkthrough.</p>
+          <div class="fleet-foot"><div class="fleet-price">$1,450<span>/day</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. HOW IT WORKS ================= -->
+<section class="section section-gunmetal-pale" id="how">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>How it works</h2>
+      <p>No lot to visit, no keys to queue for — the vehicle comes to you.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal"><div class="step-num">1</div><h4>Request</h4><p>Submit your dates, vehicle preference, and delivery location — we confirm availability within the hour.</p></div>
+      <div class="step-card reveal"><div class="step-num">2</div><h4>Prepare</h4><p>Your vehicle is detailed, inspected, and fueled by our in-house technicians before it ever leaves the hub.</p></div>
+      <div class="step-card reveal"><div class="step-num">3</div><h4>Deliver</h4><p>A member of our team brings the vehicle to your home, office, or hotel and walks you through it in person.</p></div>
+      <div class="step-card reveal"><div class="step-num">4</div><h4>Collect</h4><p>At the end of your reservation, we collect the vehicle from the same location — no drop-off required.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. SERVICES ================= -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Beyond the vehicle</h2>
+      <p>Four ways members work with Apex, from a single airport run to a standing corporate account.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?airport,limousine,arrival" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-service1/500/400';" alt="Airport transfer limousine">
+        <div class="service-body"><h3>Airport Transfer</h3><p>Flight tracking, meet-and-greet, and a car already waiting when you land.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?car,keys,handover" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-service2/500/400';" alt="Long-term car hire key handover">
+        <div class="service-body"><h3>Long-Term Hire</h3><p>Weekly and monthly rates with proactive servicing built into the term.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?chauffeur,driving,car,interior" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-service3/500/400';" alt="Chauffeur driving a luxury vehicle">
+        <div class="service-body"><h3>Chauffeur Drive</h3><p>A licensed, background-checked driver for the day, the evening, or the whole trip.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?executive,business,cars,fleet" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-service4/500/400';" alt="Corporate executive fleet of cars">
+        <div class="service-body"><h3>Corporate Fleet</h3><p>Standing accounts for firms that need vehicles on call, billed monthly.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. ABOUT / OUR STANDARD ================= -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="split reveal">
+      <img src="https://source.unsplash.com/1600x900/?car,detailing,polish,luxury" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-about/1200/1000';" alt="Detailed inspection and polishing of a luxury car">
+      <div>
+        <h2>Our standard</h2>
+        <p style="color:var(--ink-soft);">Apex was founded in Chicago in 2016 by two former dealership managers who were tired of watching exotic rental fleets get run down by anonymous handoffs. Every car we operate is titled in our name, serviced on our schedule, and inspected before and after every single reservation.</p>
+        <ul class="standard-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>100% owned fleet — never a third-party sublease</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Full detail and mechanical check before every delivery</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Comprehensive insurance included on every reservation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. CLIENT TESTIMONIALS ================= -->
+<section class="section section-gunmetal-pale" id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>What members say</h2>
+      <p>Feedback collected after every reservation, published without edits.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="quote">The car arrived spotless, ten minutes early, with the driver walking me through every feature before he left. Nothing about it felt like a rental.</p>
+        <div class="testi-person">
+          <img src="https://source.unsplash.com/1600x900/?businessman,portrait,smiling" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-client1/100/100';" alt="Client David M.">
+          <div><strong>David M.</strong><span>River North, Chicago</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="quote">We used Apex for our entire wedding weekend — the coordination with our planner was flawless and the cars were the talk of the reception.</p>
+        <div class="testi-person">
+          <img src="https://source.unsplash.com/1600x900/?woman,portrait,smiling,professional" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-client2/100/100';" alt="Client Sarah K.">
+          <div><strong>Sarah K.</strong><span>Lincoln Park, Chicago</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="quote">Our firm runs a standing corporate account now — invoicing is simple and we've never had a vehicle show up anything less than immaculate.</p>
+        <div class="testi-person">
+          <img src="https://source.unsplash.com/1600x900/?man,portrait,executive" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-client3/100/100';" alt="Client James R.">
+          <div><strong>James R.</strong><span>Operations Director</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. INDIVIDUAL VEHICLE DETAIL CARDS ================= -->
+<section class="section" id="vehicle-detail">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>A closer look</h2>
+      <p>Specs, gallery, and pricing for three of our most-reserved vehicles.</p>
+    </div>
+    <div class="vehicle-detail reveal">
+      <div class="vehicle-media"><img src="https://source.unsplash.com/1600x900/?porsche,911,sports,car" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-detail1/900/700';" alt="Porsche 911"></div>
+      <div class="vehicle-info">
+        <div class="vehicle-tagline">Sports · Available at all hubs</div>
+        <h3>Porsche 911 Carrera S</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px;">A daily-drivable sports car with the poise to handle a weekend track day and the comfort for a three-hour highway run.</p>
+        <div class="vehicle-specs">
+          <div><strong>443 hp</strong>Engine Output</div>
+          <div><strong>3.5s</strong>0–60 mph</div>
+          <div><strong>2 Seats</strong>Capacity</div>
+          <div><strong>Automatic</strong>Transmission</div>
+        </div>
+        <div class="vehicle-foot"><div class="fleet-price">$895<span>/day</span></div><a href="#reserve" class="btn btn-dark">Reserve This Car</a></div>
+      </div>
+    </div>
+    <div class="vehicle-detail reveal">
+      <div class="vehicle-media"><img src="https://source.unsplash.com/1600x900/?bentley,continental,luxury,car" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-detail2/900/700';" alt="Bentley Continental GT"></div>
+      <div class="vehicle-info">
+        <div class="vehicle-tagline">Grand Tourer · Chauffeur available</div>
+        <h3>Bentley Continental GT</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px;">Hand-stitched interior and a whisper-quiet cabin — the choice for clients who want to arrive rested, not just on time.</p>
+        <div class="vehicle-specs">
+          <div><strong>542 hp</strong>Engine Output</div>
+          <div><strong>3.7s</strong>0–60 mph</div>
+          <div><strong>4 Seats</strong>Capacity</div>
+          <div><strong>Automatic</strong>Transmission</div>
+        </div>
+        <div class="vehicle-foot"><div class="fleet-price">$1,050<span>/day</span></div><a href="#reserve" class="btn btn-dark">Reserve This Car</a></div>
+      </div>
+    </div>
+    <div class="vehicle-detail reveal">
+      <div class="vehicle-media"><img src="https://source.unsplash.com/1600x900/?rolls royce,ghost,luxury" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-detail3/900/700';" alt="Rolls-Royce Ghost"></div>
+      <div class="vehicle-info">
+        <div class="vehicle-tagline">Ultra-Luxury Sedan · Chauffeur recommended</div>
+        <h3>Rolls-Royce Ghost</h3>
+        <p style="color:var(--ink-soft); font-size:14.5px;">Our most-requested vehicle for galas, weddings, and executive arrivals where the entrance matters as much as the ride.</p>
+        <div class="vehicle-specs">
+          <div><strong>563 hp</strong>Engine Output</div>
+          <div><strong>4.6s</strong>0–60 mph</div>
+          <div><strong>5 Seats</strong>Capacity</div>
+          <div><strong>Automatic</strong>Transmission</div>
+        </div>
+        <div class="vehicle-foot"><div class="fleet-price">$1,650<span>/day</span></div><a href="#reserve" class="btn btn-dark">Reserve This Car</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. MEMBERSHIP / VIP PROGRAM ================= -->
+<section class="section section-gunmetal-pale" id="membership">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Membership</h2>
+      <p>For clients who reserve often, membership removes the friction entirely.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <h3>Access</h3>
+        <div class="plan-price">Free<span></span></div>
+        <p style="color:var(--ink-soft); font-size:14px;">Standard booking access to the full collection.</p>
+        <ul>
+          <li>Standard rates on all vehicles</li>
+          <li>24-hour advance booking</li>
+          <li>Standard delivery windows</li>
+        </ul>
+        <a href="#reserve" class="btn btn-ghost" style="width:100%;">Get Started</a>
+      </div>
+      <div class="plan-card featured reveal">
+        <span class="plan-tag">Most Popular</span>
+        <h3>Signature</h3>
+        <div class="plan-price">$450<span>/month</span></div>
+        <p style="color:var(--ink-soft); font-size:14px;">Priority access with meaningful savings for regular use.</p>
+        <ul>
+          <li>15% off all vehicle rates</li>
+          <li>Same-day booking, subject to availability</li>
+          <li>One complimentary chauffeur transfer / month</li>
+          <li>Dedicated concierge line</li>
+        </ul>
+        <a href="#reserve" class="btn btn-emerald" style="width:100%;">Join Signature</a>
+      </div>
+      <div class="plan-card reveal">
+        <h3>Black Card</h3>
+        <div class="plan-price">$1,200<span>/month</span></div>
+        <p style="color:var(--ink-soft); font-size:14px;">Unlimited priority for our most active members.</p>
+        <ul>
+          <li>25% off all vehicle rates</li>
+          <li>Guaranteed same-hour delivery</li>
+          <li>Unlimited chauffeur transfers</li>
+          <li>First access to new fleet arrivals</li>
+        </ul>
+        <a href="#reserve" class="btn btn-ghost" style="width:100%;">Join Black Card</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. DELIVERY & INSURANCE INFO ================= -->
+<section class="section" id="delivery">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Delivery &amp; insurance</h2>
+      <p>The two questions every first-time member asks — answered plainly.</p>
+    </div>
+    <div class="info-cols">
+      <div class="info-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?car,transport,delivery,driver" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-delivery/700/500';" alt="Vehicle being delivered by a driver">
+        <div class="info-card-body">
+          <h3>Delivery</h3>
+          <p>Delivered anywhere within 25 miles of a city hub, seven days a week.</p>
+          <ul>
+            <li>Free delivery within 10 miles of a hub</li>
+            <li>Flat fee beyond 10 miles, quoted at booking</li>
+            <li>Same-day delivery for Signature &amp; Black Card members</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <img src="https://source.unsplash.com/1600x900/?insurance,documents,signing" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-insurance/700/500';" alt="Insurance documents being signed">
+        <div class="info-card-body">
+          <h3>Insurance</h3>
+          <p>Every reservation includes comprehensive coverage as standard.</p>
+          <ul>
+            <li>$2M liability coverage included</li>
+            <li>Optional zero-deductible upgrade at booking</li>
+            <li>24/7 roadside &amp; incident support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. CITY HUBS MAP ================= -->
+<section class="section section-gunmetal-pale" id="hubs">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>City hubs</h2>
+      <p>Based in Chicago, with fleet stationed in two additional metro hubs.</p>
+    </div>
+    <div class="hubs-grid">
+      <div class="hub-card reveal"><img src="https://source.unsplash.com/1600x900/?chicago,skyline,night" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-hub1/700/600';" alt="Chicago skyline at night"><div class="hub-caption"><strong>Chicago</strong><span>Headquarters &amp; primary fleet — 28 vehicles</span></div></div>
+      <div class="hub-card reveal"><img src="https://source.unsplash.com/1600x900/?new york,skyline,dusk" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-hub2/700/600';" alt="New York City skyline at dusk"><div class="hub-caption"><strong>New York</strong><span>Manhattan hub — 9 vehicles</span></div></div>
+      <div class="hub-card reveal"><img src="https://source.unsplash.com/1600x900/?miami,skyline,evening" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-hub3/700/600';" alt="Miami skyline in the evening"><div class="hub-caption"><strong>Miami</strong><span>South Beach hub — 5 vehicles</span></div></div>
+    </div>
+    <div class="map-wrap reveal">
+      <iframe loading="lazy" src="https://www.google.com/maps?q=900%20N%20Michigan%20Ave%20Chicago&output=embed" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11. CORPORATE ACCOUNTS ================= -->
+<section class="section section-gunmetal" id="corporate">
+  <div class="container">
+    <div class="corp-grid">
+      <div class="reveal">
+        <h2>Corporate accounts</h2>
+        <p style="max-width:52ch; color:rgba(255,255,255,0.78);">A standing account for firms that regularly need vehicles for client visits, executive travel, or event logistics — with monthly invoicing and a single point of contact.</p>
+        <ul class="corp-list">
+          <li><div><strong>Consolidated Monthly Billing</strong><span>One invoice across every booking, coded by department if needed.</span></div></li>
+          <li><div><strong>Dedicated Account Manager</strong><span>A direct line for last-minute changes and priority scheduling.</span></div></li>
+          <li><div><strong>Multi-User Booking Access</strong><span>Add team members who can book directly against the account.</span></div></li>
+        </ul>
+        <a href="#reserve" class="btn btn-emerald" style="margin-top:10px;">Set Up a Corporate Account</a>
+      </div>
+      <img src="https://source.unsplash.com/1600x900/?business,meeting,executive,office" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-corporate/1200/1000';" alt="Executive business meeting" class="reveal" style="border-radius:var(--radius-lg); height:420px; object-fit:cover; box-shadow:var(--shadow-soft);">
+    </div>
+  </div>
+</section>
+
+<!-- ================= 12. WEDDING / EVENT RENTALS ================= -->
+<section class="section" id="events">
+  <div class="container">
+    <div class="event-wrap reveal">
+      <img src="https://source.unsplash.com/1600x900/?wedding,car,decorated,ribbon" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-wedding/1200/1000';" alt="Decorated wedding car with ribbons">
+      <div>
+        <h2>Weddings &amp; events</h2>
+        <p style="color:var(--ink-soft);">From a single bridal car to a full motorcade for the wedding party, our events team coordinates directly with your planner on timing, routing, and photo stops.</p>
+        <ul class="standard-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Multi-vehicle motorcade coordination</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Uniformed chauffeurs for the full event</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Ribbon &amp; decoration setup on request</li>
+        </ul>
+        <a href="#reserve" class="btn btn-dark" style="margin-top:10px;">Plan Your Event</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 13. GALLERY ================= -->
+<section class="section section-gunmetal-pale" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Gallery</h2>
+      <p>A sample of the fleet in motion.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="https://source.unsplash.com/1600x900/?ferrari,sports,car,red" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-gallery1/500/500';" alt="Red Ferrari sports car"></div>
+      <div class="gallery-item reveal"><img src="https://source.unsplash.com/1600x900/?maserati,luxury,car" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-gallery2/500/500';" alt="Maserati luxury car"></div>
+      <div class="gallery-item reveal"><img src="https://source.unsplash.com/1600x900/?audi,rs,sedan,black" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-gallery3/500/500';" alt="Audi RS sedan"></div>
+      <div class="gallery-item reveal"><img src="https://source.unsplash.com/1600x900/?bmw,m-series,luxury" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-gallery4/500/500';" alt="BMW M-series luxury car"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 14. FAQ ================= -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header center reveal" style="margin-left:auto; margin-right:auto;">
+      <h2>Frequently asked questions</h2>
+      <p>Anything else, our concierge line is staffed around the clock.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <div class="faq-q"><span>Do you actually own every vehicle?</span><span class="plus"></span></div>
+        <div class="faq-a"><p>Yes — every car in the collection is titled to Apex Motor Club. We never sublease from third-party owners or other rental agencies.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>What's the minimum age to reserve?</span><span class="plus"></span></div>
+        <div class="faq-a"><p>25 for most of the collection, 30 for our top-tier exotics. A valid license and proof of insurance are required at delivery.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Can I extend my reservation mid-rental?</span><span class="plus"></span></div>
+        <div class="faq-a"><p>Yes, subject to availability — message your concierge and we'll confirm within the hour, often without you needing to swap vehicles.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Is a security deposit required?</span><span class="plus"></span></div>
+        <div class="faq-a"><p>A refundable hold is placed on file at delivery, released automatically within 5 business days of a clean return.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Do you deliver outside your three hub cities?</span><span class="plus"></span></div>
+        <div class="faq-a"><p>On request — long-distance delivery is available for an additional fee, most commonly arranged for weddings and corporate events.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 15. REQUIREMENTS & ELIGIBILITY ================= -->
+<section class="section section-gunmetal-pale" id="requirements">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Requirements &amp; eligibility</h2>
+      <p>What to have ready before your vehicle is delivered.</p>
+    </div>
+    <div class="req-grid">
+      <div class="req-card reveal"><h3>Valid Driver's License</h3><p>A current license held for at least 3 years, presented at delivery for verification.</p></div>
+      <div class="req-card reveal"><h3>Proof of Insurance</h3><p>Personal auto insurance or acceptance of our optional full-coverage add-on.</p></div>
+      <div class="req-card reveal"><h3>Minimum Age</h3><p>25 for the standard collection, 30 for exotic and ultra-luxury vehicles.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 16. RESERVATION FORM ================= -->
+<section class="section" id="reserve">
+  <div class="container">
+    <div class="reserve-wrap">
+      <div class="reveal">
+        <h2>Reserve a vehicle</h2>
+        <p style="color:var(--ink-soft); margin-bottom:26px;">Submit your details and a concierge will confirm your reservation by phone within the hour.</p>
+        <div class="reserve-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5l3 2"/></svg>
+          <p>Same-day delivery is available for most of the collection before 4pm. For weddings or multi-vehicle events, please reserve at least two weeks in advance.</p>
+        </div>
+        <ul class="reserve-list">
+          <li><strong>Concierge Hours</strong> 24/7, every day of the year</li>
+          <li><strong>Confirmation Time</strong> Within 1 hour</li>
+          <li><strong>Delivery Radius</strong> 25 miles from any hub</li>
+        </ul>
+      </div>
+      <form class="reserve-form reveal" id="reserveForm">
+        <div class="form-row">
+          <div class="field"><label for="resName">Your Name</label><input type="text" id="resName" required></div>
+          <div class="field"><label for="resPhone">Phone Number</label><input type="tel" id="resPhone" placeholder="+1 312 XXX XXXX" required></div>
+        </div>
+        <div class="field"><label for="resVehicle">Preferred Vehicle</label>
+          <select id="resVehicle" required>
+            <option value="">Select a vehicle</option>
+            <option>Mercedes-Benz S-Class</option>
+            <option>Range Rover Autobiography</option>
+            <option>Lamborghini Huracán</option>
+            <option>Porsche 911 Carrera S</option>
+            <option>Bentley Continental GT</option>
+            <option>Rolls-Royce Ghost</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="resStart">Pickup Date</label><input type="date" id="resStart" required></div>
+          <div class="field"><label for="resEnd">Return Date</label><input type="date" id="resEnd" required></div>
+        </div>
+        <div class="field"><label for="resLocation">Delivery Location</label><input type="text" id="resLocation" placeholder="Home, office, or hotel address" required></div>
+        <div class="field"><label for="resNotes">Anything else we should know?</label><textarea id="resNotes" rows="3" placeholder="Chauffeur needed, event details, etc."></textarea></div>
+        <button type="submit" class="btn btn-emerald">Request Reservation</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 17. REVIEWS ================= -->
+<section class="section section-gunmetal-pale" id="reviews">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Reviews</h2>
+      <p>Aggregated from our concierge follow-up after every reservation.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-row reveal">
+        <img src="https://source.unsplash.com/1600x900/?woman,portrait,business" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-review1/100/100';" alt="Reviewer Elena V.">
+        <div><strong>Elena V.</strong><div class="stars">★★★★★</div><p>Booked the Ghost for our anniversary — the delivery driver even helped with photos. Worth every dollar.</p></div>
+      </div>
+      <div class="review-row reveal">
+        <img src="https://source.unsplash.com/1600x900/?man,portrait,casual,smiling" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-review2/100/100';" alt="Reviewer Tom H.">
+        <div><strong>Tom H.</strong><div class="stars">★★★★★</div><p>Fastest reservation confirmation I've had from any luxury rental — under 20 minutes on a Saturday night.</p></div>
+      </div>
+      <div class="review-row reveal">
+        <img src="https://source.unsplash.com/1600x900/?woman,portrait,glasses,professional" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-review3/100/100';" alt="Reviewer Priya N.">
+        <div><strong>Priya N.</strong><div class="stars">★★★★★</div><p>The Signature membership paid for itself after two trips. Concierge line actually answers immediately.</p></div>
+      </div>
+      <div class="review-row reveal">
+        <img src="https://source.unsplash.com/1600x900/?man,portrait,beard,smiling" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-review4/100/100';" alt="Reviewer Chris B.">
+        <div><strong>Chris B.</strong><div class="stars">★★★★★</div><p>Used them for a client visit — the S-Class was spotless and the driver arrived early to double check details.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 18. INSTAGRAM GALLERY ================= -->
+<section class="section" id="instagram">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>@apexmotorclub</h2>
+      <p>Follow the collection on Instagram for new arrivals and member drives.</p>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-item reveal"><img src="https://source.unsplash.com/1600x900/?mclaren,supercar,orange" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-insta1/300/300';" alt="McLaren supercar"></div>
+      <div class="insta-item reveal"><img src="https://source.unsplash.com/1600x900/?aston martin,luxury,coupe" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-insta2/300/300';" alt="Aston Martin coupe"></div>
+      <div class="insta-item reveal"><img src="https://source.unsplash.com/1600x900/?tesla,model,s,black" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-insta3/300/300';" alt="Tesla Model S"></div>
+      <div class="insta-item reveal"><img src="https://source.unsplash.com/1600x900/?car,interior,leather,dashboard" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-insta4/300/300';" alt="Luxury car leather interior"></div>
+      <div class="insta-item reveal"><img src="https://source.unsplash.com/1600x900/?car,wheel,rim,closeup" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-insta5/300/300';" alt="Luxury car wheel close-up"></div>
+      <div class="insta-item reveal"><img src="https://source.unsplash.com/1600x900/?convertible,car,sunset,drive" onerror="this.onerror=null;this.src='https://picsum.photos/seed/apex-insta6/300/300';" alt="Convertible car driving at sunset"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 19. NEWSLETTER ================= -->
+<section class="section section-tight">
+  <div class="container">
+    <div class="newsletter-box reveal">
+      <div>
+        <h2>New arrivals, first</h2>
+        <p>Be the first to know when a new vehicle joins the collection.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit" class="btn btn-emerald">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 20. FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 100 100" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="20" fill="#24282B"/>
+            <path d="M20 62 L38 34 L50 34 L44 46 L62 46 L80 62 Z" fill="none" stroke="#10A37F" stroke-width="5" stroke-linejoin="round"/>
+            <circle cx="34" cy="66" r="6" fill="#10A37F"/>
+            <circle cx="66" cy="66" r="6" fill="#10A37F"/>
+          </svg>
+          <span>Apex Motor Club</span>
+        </div>
+        <p style="max-width:32ch; font-size:14px;">A privately owned exotic and executive fleet, delivered across Chicago, New York, and Miami since 2016.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0v8"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#collection">The Collection</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#events">Weddings &amp; Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">Our Standard</a></li>
+          <li><a href="#hubs">City Hubs</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>900 N Michigan Ave, Suite 1200, Chicago, IL 60611</li>
+          <li>+1 312 674 9038</li>
+          <li>hello@apexmotorclub.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Apex Motor Club LLC. All rights reserved.</span>
+      <span>Privacy Policy · Terms of Service</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MODAL ================= -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+    <h3 id="modalTitle">Reservation requested</h3>
+    <p id="modalText">Thank you — a concierge will call to confirm your vehicle and delivery details shortly.</p>
+    <button class="btn btn-dark" id="modalClose">Close</button>
+  </div>
+</div>
+
+<script>
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('solid', window.scrollY > 60));
+
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const primaryLinks = document.getElementById('primaryLinks');
+  hamburgerBtn.addEventListener('click', () => primaryLinks.classList.toggle('open'));
+  primaryLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => primaryLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText = document.getElementById('modalText');
+  function showModal(title, text) {
+    modalTitle.textContent = title;
+    modalText.textContent = text;
+    modalOverlay.classList.add('active');
+  }
+  document.getElementById('modalClose').addEventListener('click', () => modalOverlay.classList.remove('active'));
+  modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.classList.remove('active'); });
+
+  document.getElementById('reserveForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    showModal('Reservation requested', 'Thank you — a concierge will call within the hour to confirm your vehicle, delivery time, and location.');
+    e.target.reset();
+  });
+  document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    showModal("You're subscribed", 'Welcome to Apex — look out for new arrival announcements soon.');
+    e.target.reset();
+  });
+</script>
+
+</body>
+</html>
